@@ -1,19 +1,12 @@
 package com.mjc.school.controller.impl;
 
-import com.github.fge.jsonpatch.JsonPatch;
 import com.mjc.school.controller.TagController;
-import com.mjc.school.controller.BaseController;
 import com.mjc.school.service.TagService;
-import com.mjc.school.service.BaseService;
-import com.mjc.school.service.dto.CommentResponseDto;
-import com.mjc.school.service.dto.TagRequestDto;
-import com.mjc.school.service.dto.TagResponseDto;
 import com.mjc.school.service.dto.TagRequestDto;
 import com.mjc.school.service.dto.TagResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,20 +23,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/tags")
-public class TagRestControllerImpl implements TagController {
+public class TagRestController implements TagController {
 
     private final TagService tagService;
 
     @Autowired
-    public TagRestControllerImpl(TagService tagService) {
+    public TagRestController(TagService tagService) {
         this.tagService = tagService;
     }
 
     @Override
     @GetMapping
     public ResponseEntity<List<TagResponseDto>> readAll(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-                                                           @RequestParam(value = "size", required = false, defaultValue = "5") int size,
-                                                           @RequestParam(value = "sort_by", required = false, defaultValue = "name") String sortBy) {
+                                                        @RequestParam(value = "size", required = false, defaultValue = "5") int size,
+                                                        @RequestParam(value = "sort_by", required = false, defaultValue = "name") String sortBy) {
         var tagDTOResponses = tagService.readAll(page, size, sortBy);
         return new ResponseEntity<>(tagDTOResponses, HttpStatus.OK);
     }
@@ -68,7 +61,7 @@ public class TagRestControllerImpl implements TagController {
     @PutMapping("/{id}")
     @Override
     public ResponseEntity<TagResponseDto> update(@PathVariable("id") Long id,
-                                                    @Validated @RequestBody TagRequestDto updateRequest) {
+                                                 @Validated @RequestBody TagRequestDto updateRequest) {
         var tagResponseDto = tagService.update(updateRequest);
         return new ResponseEntity<>(tagResponseDto, HttpStatus.OK);
     }
@@ -81,13 +74,9 @@ public class TagRestControllerImpl implements TagController {
     }
 
     @Override
+    @GetMapping
     public ResponseEntity<List<TagResponseDto>> readByNewsId(Long id) {
         var tagResponseDto = tagService.readByNewsId(id);
         return new ResponseEntity<>(tagResponseDto, HttpStatus.OK);
-    }
-
-    @Override
-    public TagResponseDto patch(Long id, JsonPatch patch) {
-        return null;
     }
 }

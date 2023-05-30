@@ -12,6 +12,4 @@ import java.util.List;
 public interface AuthorController extends BaseController<AuthorRequestDto, AuthorResponseDto, Long> {
 
     ResponseEntity<AuthorResponseDto> readByNewsId(Long id);
-
-    AuthorResponseDto patch(Long id, JsonPatch patch);
 }

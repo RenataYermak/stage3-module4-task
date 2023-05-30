@@ -9,8 +9,5 @@ import java.util.List;
 
 public interface TagController extends BaseController<TagRequestDto, TagResponseDto, Long> {
 
-    //List<TagResponseDto> getTags(Pageable pageable, String name, Long newsId);
     ResponseEntity<List<TagResponseDto>> readByNewsId(Long id);
-
-    TagResponseDto patch(Long id, JsonPatch patch);
 }

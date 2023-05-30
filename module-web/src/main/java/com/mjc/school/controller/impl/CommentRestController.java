@@ -1,6 +1,5 @@
 package com.mjc.school.controller.impl;
 
-import com.github.fge.jsonpatch.JsonPatch;
 import com.mjc.school.controller.CommentController;
 import com.mjc.school.service.CommentService;
 import com.mjc.school.service.dto.CommentRequestDto;
@@ -24,20 +23,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/comments")
-public class CommentRestControllerImpl implements CommentController {
+public class CommentRestController implements CommentController {
 
     private final CommentService commentService;
 
     @Autowired
-    public CommentRestControllerImpl(CommentService commentService) {
+    public CommentRestController(CommentService commentService) {
         this.commentService = commentService;
     }
 
     @Override
     @GetMapping
     public ResponseEntity<List<CommentResponseDto>> readAll(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-                                                           @RequestParam(value = "size", required = false, defaultValue = "5") int size,
-                                                           @RequestParam(value = "sort_by", required = false, defaultValue = "name") String sortBy) {
+                                                            @RequestParam(value = "size", required = false, defaultValue = "5") int size,
+                                                            @RequestParam(value = "sort_by", required = false, defaultValue = "name") String sortBy) {
         var commentDTOResponses = commentService.readAll(page, size, sortBy);
         return new ResponseEntity<>(commentDTOResponses, HttpStatus.OK);
     }
@@ -62,7 +61,7 @@ public class CommentRestControllerImpl implements CommentController {
     @PutMapping("/{id}")
     @Override
     public ResponseEntity<CommentResponseDto> update(@PathVariable("id") Long id,
-                                                    @Validated @RequestBody CommentRequestDto updateRequest) {
+                                                     @Validated @RequestBody CommentRequestDto updateRequest) {
         var commentResponseDto = commentService.update(updateRequest);
         return new ResponseEntity<>(commentResponseDto, HttpStatus.OK);
     }
@@ -75,13 +74,10 @@ public class CommentRestControllerImpl implements CommentController {
     }
 
     @Override
+    @GetMapping
     public ResponseEntity<List<CommentResponseDto>> readByNewsId(Long id) {
         var commentResponseDto = commentService.readByNewsId(id);
         return new ResponseEntity<>(commentResponseDto, HttpStatus.OK);
     }
 
-    @Override
-    public CommentResponseDto patch(Long id, JsonPatch patch) {
-        return null;
-    }
 }

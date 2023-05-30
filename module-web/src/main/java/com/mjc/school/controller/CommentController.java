@@ -11,9 +11,5 @@ import java.util.List;
 
 public interface CommentController extends BaseController<CommentRequestDto, CommentResponseDto, Long> {
 
-    //List<CommentResponseDto> getComments(Pageable pageable, String name, Long newsId);
-
     ResponseEntity<List<CommentResponseDto>> readByNewsId(Long id);
-
-    CommentResponseDto patch(Long id, JsonPatch patch);
 }
