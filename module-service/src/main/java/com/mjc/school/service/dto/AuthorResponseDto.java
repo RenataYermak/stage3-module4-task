@@ -3,19 +3,20 @@ package com.mjc.school.service.dto;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
-public final class CommentResponseDto {
+public final class AuthorResponseDto {
 
     private final Long id;
-    @Size(min = 5, max = 255)
-    private final String content;
-    private final NewsResponseDto newsDto;
+    @Size(min = 3, max = 15)
+    private final String name;
     private final LocalDateTime createDate;
     private final LocalDateTime lastUpdateDate;
 
-    public CommentResponseDto(Long id, String content, NewsResponseDto newsDto, LocalDateTime createDate, LocalDateTime lastUpdateDate) {
+    public AuthorResponseDto(Long id,
+                             String name,
+                             LocalDateTime createDate,
+                             LocalDateTime lastUpdateDate) {
         this.id = id;
-        this.content = content;
-        this.newsDto = newsDto;
+        this.name = name;
         this.createDate = createDate;
         this.lastUpdateDate = lastUpdateDate;
     }
@@ -24,12 +25,8 @@ public final class CommentResponseDto {
         return id;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public NewsResponseDto getNewsDto() {
-        return newsDto;
+    public String getName() {
+        return name;
     }
 
     public LocalDateTime getCreateDate() {

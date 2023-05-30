@@ -1,8 +1,11 @@
 package com.mjc.school.service.dto;
 
+import javax.validation.constraints.Size;
+
 public final class CommentRequestDto {
 
     private final Long id;
+    @Size(min = 5, max = 255)
     private final String content;
     private final Long newsId;
 
