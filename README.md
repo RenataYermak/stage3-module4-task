@@ -13,24 +13,24 @@ The recommended timeline for the whole module is 2 weeks.
 - Implement exception handler for REST controllers. Use @ControllerAdvice annotation.
 - The REST controllers should support of [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations for above mentioned objects.
 - The REST controller methods should:
-  - Support retrieval of collection of authors, tags, news and comments using search criteria, pagination and sorting.
-  - Support retrieval of author, tag, news and comment by id.
-  - Support creation of author, tag, news and comment.
-  - Support modification of author, tag, news and comment.
-  - Support partial modification of author, tag, news and comment using PATCH HTTP Verb.
-  - Support deletion of author, tag, news and comment by id.
-  - Support retrieval of author by news id.
-  - Support retrieval of tags by news id.
-  - Support retrieval of comments by news id.
-  - Support retrieval of news by tag names, tag ids, author name, title, content (all params are optional and can be used
-    in conjunction) [optional].
+    - Support retrieval of collection of authors, tags, news and comments using search criteria, pagination and sorting.
+    - Support retrieval of author, tag, news and comment by id.
+    - Support creation of author, tag, news and comment.
+    - Support modification of author, tag, news and comment.
+    - Support partial modification of author, tag, news and comment using PATCH HTTP Verb.
+    - Support deletion of author, tag, news and comment by id.
+    - Support retrieval of author by news id.
+    - Support retrieval of tags by news id.
+    - Support retrieval of comments by news id.
+    - Support retrieval of news by tag names, tag ids, author name, title, content (all params are optional and can be used
+      in conjunction) [optional].
 - Use versioning of REST controllers and their methods [optional].
 - Use Data transfer objects DTO as input parameters (requests) and output result (response).
 - Validate input parameters (requests) of REST controller methods.
 
 #### Prerequisites
 
-Your **ORM** solution. Do not delete or move basic interfaces. 
+Your **ORM** solution. Do not delete or move basic interfaces.
 
 You may create your own REST controller interfaces on the base of the BaseController interface.
 
